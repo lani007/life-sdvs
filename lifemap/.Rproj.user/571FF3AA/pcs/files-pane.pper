@@ -1,0 +1,9 @@
+{
+    "path" : "~/lifemap",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

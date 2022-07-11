@@ -1,0 +1,18 @@
+{
+    "contents" : "\nhg_data <- generate_data(q_hg)\n\nget_age_std <- function(data, ot.id, in_gender = \"all\", in_age = \"all\", groupvars = \"id\"){\n  if(in_gender == \"all\") in_gender <- unique(data$gender[!is.na(data$gender)])\n  if(in_age == \"all\") in_age <- unique(data$age_class[!is.na(data$age_class)])\n  group <-  data %>% filter(id==ot.id, gender %in% in_gender ,age_class %in% in_age) %>% group_by_(.dots = groupvars)\n  dplyr::summarise(group, num = sum(num), mean = mean(value), median = median(value))\n}\n\nmake_leipzig_age <- function(){\n  c1<-c(\"(18,40]\",0.39, 0.40, 0.37)\n  c2<-c(\"(40,60]\",0.30, 0.32, 0.28)\n  c3<-c(\"(60,80+]\",0.31, 0.28, 0.35)\n  std <-rbind(c1,c2,c3)\n  colnames(std) <- c(\"age_class\",\"all\",\"male\",\"female\")\n  std <- as.data.frame(std)\n  cols = c(2,3,4)\n  std[,cols] = apply(std[,cols], 2, function(x) as.numeric(as.character(x)))\n  return(std)\n}\n\nstd <-make_leipzig_age()\n\nget_std_df <- function(data=hg_data,in_gender=\"all\",map=\"ot\",filter_value=0){\n  if (map == \"ot\"){\n    id <- \"id\"\n    name <- ot_label[,3:4]\n  }\n  else if (map == \"sbz\"){\n    id <- \"sbz.id\"\n    name <- sbz_label_points[,c(1,4)]\n  }\n  age_df_a <-get_group_data(data=data, in_gender=in_gender, in_age = \"all\", groupvars = c(\"id\",\"age_class\"))\n  age_df <- select(age_df_a,id, age_class,num, mean)\n  df <-merge(age_df,std,by=\"age_class\")\n  df <- df[with(df,order(id,age_class)),]\n  if (in_gender==\"all\"){\n    df$prop <-df$all\n  } else if (in_gender==\"1\"){\n    df$prop <-df$male\n  } else if (in_gender==\"2\"){\n    df$prop <-df$female\n  }\n  df$s_mean <- df$mean*df$prop\n  df <- select(df,id,age_class,num,mean,prop,s_mean)\n  dfs <- df %>% group_by(id) %>% summarise(num=sum(num),s_mean=sum(s_mean),nr=length(id))\n  dfs <- as.data.frame(dfs)\n  dfs <- filter(dfs,nr == 3)\n  # get mean for each region \n  mean_df <-get_group_data(data=data, in_gender=in_gender, in_age = \"all\", groupvars = c(\"id\"))\n  age_df <- select(mean_df,id,num, mean)\n  dfTable <- left_join(age_df,dfs,by=\"id\")\n  dfTable <- select(dfTable,id,num.x,mean,s_mean)\n  dfTable_filtered <- filter(dfTable, num.x > filter_value)\n  show <- select(dfTable_filtered,id,s_mean)\n  ## TODO add statslabel\n  colnames(show)[1] <- \"id\"\n  if (map == \"ot\"){\n    empty_id <- data.frame(ot_label_points$id)\n    colnames(empty_id) <- \"id\"\n    show <- dplyr::left_join(empty_id, show, by=\"id\")\n    col1 <- \"Ortsteil ID\"\n  }\n  else if (map == \"sbz\"){\n#     empty_id1 <-data.frame(sbz_label_points$id)\n#     colnames(empty_id1) <- \"id\"\n    empty_id <- data.frame(unique(ot_label$sbz.id))\n    colnames(empty_id) <- \"id\"\n    show <- dplyr::left_join(empty_id, show, by= \"id\")\n    col1 <- \"Stadtbezirk ID\"\n  }\n  colnames(dfTable) <- c(col1,\"Absolute frequency\",\"Mean\",\"Age standardized mean\")\n  return(list(as.data.frame(dfTable),show,show))\n} \n\n\n\n# df <- get_std_df(in_gender = \"2\",filter_value = 100)\n# df[[2]]$s_mean\n\n\n",
+    "created" : 1454590575057.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3119034917",
+    "id" : "413DE42D",
+    "lastKnownWriteTime" : 1454607520,
+    "path" : "~/lifemap_shiny/get_data_standardization.r",
+    "project_path" : "get_data_standardization.r",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

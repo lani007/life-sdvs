@@ -1,0 +1,24 @@
+{
+    "id": "6A045823",
+    "path": "~/Github_projects/LIFE-SDVS/lifemap/use-cases/usecase-plot_continuous_sbz.r",
+    "project_path": "use-cases/usecase-plot_continuous_sbz.r",
+    "type": "r_source",
+    "hash": "4130413546",
+    "contents": "",
+    "dirty": false,
+    "created": 1657544555261.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1459501340,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1459501340,
+    "read_only": false,
+    "read_only_alternatives": []
+}

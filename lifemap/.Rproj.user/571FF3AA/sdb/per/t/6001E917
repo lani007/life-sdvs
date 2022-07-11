@@ -1,0 +1,17 @@
+{
+    "contents" : "library(plotrix)\nlibrary(TeachingDemos)\nlibrary(dplyr)\nload(\"data/ot_polygon.rdata\")\nload(\"data/ot_label_points.rdata\")\nload(\"data/sbz_polygon.rdata\")\nload(\"data/sbz_label_points.rdata\")\n\n# Ortsteile data\nbmiDf <- read.csv(\"data-raw/bmi.csv\")\nbmiDf$id <- sprintf(\"%02d\",bmiDf$id)\nfilter_value <- 30\nplot_category(plotType = \"pie\",filterValue = filter_value)\nplot_category(plotType = \"bar\",filterValue = filter_value)\n\n\n# Stadtbezirk data\nbmiDf_merged <- merge(bmiDf, ot_label_points,by=\"id\")\nbmiDf_sbz <- bmiDf_merged %>% group_by(sbz.id,category) %>% summarize(num=sum(num))\ncolnames(bmiDf_sbz)[1] <- \"id\"\n\ncategories <- sort(unique(bmiDf$category))\nlegends <- paste0(\"legend \",categories,sep=\"\")\nplot_category(plotType = \"pie\",map=\"Stadtbezirk\",inputDf =bmiDf_sbz,textFont =\"Times\",\n              filterValue = filter_value,legendText =legends)\n\n",
+    "created" : 1454587639763.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3489102924",
+    "id" : "6001E917",
+    "lastKnownWriteTime" : 1453472508,
+    "path" : "~/lifemap/use-cases/usecase-category_chart_bmi.r",
+    "project_path" : "use-cases/usecase-category_chart_bmi.r",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

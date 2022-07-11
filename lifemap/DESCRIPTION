@@ -1,0 +1,24 @@
+Package: lifemap
+Type: Package
+Title: Find labeling points within each polygon and plot maps with various
+    labeling options
+Version: 0.1
+Date: 2016-01-19
+Authors@R: person("Ying-Chi", "Lin", email = "yingchilin@gmail.com", role = c("aut", "cre"))
+Description: Calculate points to place label/graphics within each polygon.
+    Filling maps with data. Labeling map with internal and external labels.
+License: GPL (>= 2)
+LazyData: TRUE
+Depends:
+    ggplot2,
+    ggthemes,
+    grid,
+    gridExtra,
+    plotrix,
+    TeachingDemos,
+    roxygen2
+NeedsCompilation: no
+Packaged: 2015-11-23 17:52:45 UTC; llin
+Author: Ying-Chi Lin [aut, cre]
+Maintainer: Ying-Chi Lin <yingchilin@gmail.com>
+RoxygenNote: 5.0.0

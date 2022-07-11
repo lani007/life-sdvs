@@ -1,0 +1,17 @@
+{
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n\nshinyServer(function(input, output) {\n  \n  source('server_continuous.r',local = TRUE)\n  source('server_categorical.r',local = TRUE)\n})\n\n\n",
+    "created" : 1452874995197.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2124745342",
+    "id" : "E4159B20",
+    "lastKnownWriteTime" : 1454589733,
+    "path" : "~/lifemap_shiny/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: lifemap\nType: Package\nTitle: Find labeling points within each polygon and plot maps with various\n    labeling options\nVersion: 0.1\nDate: 2015-10-06\nAuthors@R: person(\"Ying-Chi\", \"Lin\", email = \"llin@life.uni-leipzig.de\", role = c(\"aut\", \"cre\"))\nDescription: Calculate points to place label/graphics within each polygon.\n    Filling maps with data. Labeling map with internal and external labels.\nLicense: GPL (>= 2)\nLazyData: TRUE\nDepends:\n    ggplot2,\n    ggthemes,\n    grid,\n    gridExtra,\n    roxygen2\nNeedsCompilation: no\nPackaged: 2015-11-23 17:52:45 UTC; llin\nAuthor: Ying-Chi Lin [aut, cre]\nMaintainer: Ying-Chi Lin <llin@life.uni-leipzig.de>\nRoxygenNote: 5.0.0\n",
+    "created" : 1452867462410.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "494000735",
+    "id" : "91AB3522",
+    "lastKnownWriteTime" : 1453472204,
+    "path" : "~/lifemap/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "dcf"
+}

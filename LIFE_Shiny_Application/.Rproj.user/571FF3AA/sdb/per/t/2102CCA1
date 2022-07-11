@@ -1,0 +1,17 @@
+{
+    "contents" : "                                    \n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n\nshinyUI(\n  navbarPage(\"LIFE\",\n             tabPanel(\"Continuous Data\",source('ui_continuous.r',local = TRUE) ),\n             tabPanel(\"Categorical Data\",source('ui_categorical.r',local = TRUE) )\n             \n  )\n)\n",
+    "created" : 1452003051641.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "433087365",
+    "id" : "2102CCA1",
+    "lastKnownWriteTime" : 1454589733,
+    "path" : "~/lifemap_shiny/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
